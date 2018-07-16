@@ -298,7 +298,7 @@ VCOS_STATUS_T vcos_semaphore_wait_timeout(VCOS_SEMAPHORE_T *sem, VCOS_UNSIGNED t
       return VCOS_EINVAL;
    ts.tv_sec  += timeout/1000;
    ts.tv_nsec += (timeout%1000)*1000*1000;
-   if (ts.tv_nsec > 1000000000) {
+   if (ts.tv_nsec >= 1000000000) {
       ts.tv_sec++;
       ts.tv_nsec -= 1000000000;
    }
